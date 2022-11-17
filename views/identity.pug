@@ -1,0 +1,20 @@
+extends layout.pug
+
+block content
+    div.main-width
+        <div class="container px-4 py-5 my-5 text-center justify-content-start">
+            <h1 class="fw-bold width-auto mb-5">Identity Verification</h1>
+            <div class="row justify-content-center">
+              <div class="col-12 col-sm-12 col-md-8 col-lg-6 col-xl-6">
+                  <p class="lead mb-4"><b>Complete the form below to submit identify yourself</b></p>
+                  <p class="lead mb-2"><b>Full name</b></p>
+                  <input type="text" class="form-control mb-4" id="email" placeholder="Enter name" name="name">
+                  <p class="lead mb-2"><b>Date of Birth</b></p>
+                  <p class="lead mb-2"><small>For example 03/31/1980</small></p>
+                  <input type="date" class="form-control mb-4" id="birthday" placeholder="Date of Birth" name="birthday">
+                  <a href="/title"><button type="button" class="btn btn-success">Continue</button></a>
+              </div>
+            </div>
+        </div>
+
+

@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tokenizer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="The easiest way to add tokens to your wallet."/>
+
+    <link rel="icon" type="image/png" href="/assets/images/icon2.png"/>
+    <link rel ="apple-touch-icon" type ="image/png" href="/assets/images/chainparency.png"/>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.js" integrity="sha512-TbK1NsnYsmC/wJRzEIvaG5D23gVk8cQBPCSVRtvaTTTEZyRoBSmPEvYqMZsafm7Mtt0XzdMwTCkBxPifBSKc5Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <link href="/assets/css/styles.css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.2.7-rc.0/web3.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcRxoAjsX_FxADk1vj7ZIZjUud4g50W3E">
+    </script>
+    script.
+        //- can't seem to share a variable from the module script in head.pug...
+        const fbConfig =  {
+            apiKey: "AIzaSyBWa_N9-Qp-nsjVa_zr7SzeSKnY3fqtJP8",
+            authDomain: "tokenizer-dev-bae64.firebaseapp.com",
+            projectId: "tokenizer-dev-bae64", 
+            storageBucket: "tokenizer-dev-bae64.appspot.com", 
+            messagingSenderId: "415696280561", 
+            appId: "1:415696280561:web:2f4be290ee40d4224fc250" 
+        };
+
+
+</head>
+
+body
+
+    script(type="module").
+        import '/assets/components/signin-or-out.js'
+        import '/assets/components/connect-wallet.js'
+        import '/assets/components/toast.js'
+        import '/assets/components/loader.js'
+
+    nav(class="navbar navbar-expand-lg navbar-light bg-light")
+
+        div(class="container-fluid main-width")
+            a(class="navbar-brand" href="/")
+                img(src="/assets/images/chainparency.png" style="height: 50px;")
+                //- span TokenTapper
+            button(class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation")
+                span(class="navbar-toggler-icon")
+            div(class="collapse navbar-collapse" id="navbarSupportedContent")
+                ul(class="navbar-nav me-auto mb-2 mb-lg-0")            
+                    li.nav-item
+                        div#autocomplete
+                    //- li.nav-item
+                    //-     a.nav-link(href="/new") New
+                    //- li.nav-item
+                    //-     a.nav-link(href="/things") List
+                    //- li.nav-item
+                    //-     a.nav-link(href="/things?archived=true") Archive
+                    li.nav-item
+                        a.nav-link(href="/tokenize") Tokenize
+                    li.nav-item
+                        a.nav-link(href="/investments") Investments
+                    li.nav-item
+                        a.nav-link(href="/assetregister") Register Asset
+                    //- li.nav-item
+                    //-     a.nav-link(href="/assettoken") Asset Token
+                    li.nav-item
+                        a.nav-link(href="/admin") Admin
+                    li.nav-item
+                        a.nav-link(href="/myassets") My Assets
+                    li.nav-item
+                        a.nav-link(href="/organizations") Organizations
+                    li.nav-item
+                        a.nav-link(href="/sales") Sales
+                connect-wallet
+                signin-or-out
+    toast-message
+    loader-component

@@ -1,0 +1,12 @@
+extends layout.pug
+
+block content
+    div.main-width
+        script.
+            var assetId = '#{assetId}'
+            console.log('assetId:',assetId)
+        script(type="module").
+            import '/assets/components/assetinfo.js'
+        asset-info
+
+

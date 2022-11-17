@@ -1,0 +1,12 @@
+extends layout.pug
+
+block content
+    div.main-width
+        script.
+            var orgId = '#{orgId}'
+        script(type="module").
+            import '/assets/components/orgassets.js'
+        <orgassets-panel>
+        
+
+

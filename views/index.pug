@@ -1,0 +1,73 @@
+
+extends layout.pug
+
+block content
+    div.main-width
+        <div class="px-4 py-5 my-5 text-center">
+            <h1 class="fw-bold">The Best App</h1>
+            <div class="col-lg-6 mx-auto">
+                <p class="lead mb-4">The app to end all apps</p>
+                    <form class="form-inline my-2 my-lg-0" action="javascript:void(0);" style="width:100%;">
+                <div style="display: flex; justify-content: center; flex-wrap: wrap;">
+                    <div class="" style=" flex-grow: 4; margin-right: 12px;">
+                        <input id="hero-search-input" style="width:100%;" class="form-control mr-sm-2" type="search" placeholder="Enter search text" aria-label="Search">
+                    </div>
+                    <div class="">
+                        <button id="hero-search-button" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+
+        script.
+            document.getElementById("hero-search-button").addEventListener('click', ()=>{
+                console.log("clicked")
+                let input = document.getElementById("hero-search-input")
+                window.location.href = `/tokens/${input.value}`
+            })
+
+        div
+            input(type="text" id="msginput" x-ref="msginput")
+            button#msgsubmit.btn.btn-primary Submit
+
+
+        script(type="module").
+            import zapi from '/assets/js/api.js'
+            // todo: make make a api-toast that will auto toast api errors
+            import 'https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@^2.0.0-beta.57/dist/components/alert/alert.js/+esm';
+
+            let b = document.getElementById('msgsubmit')
+            b.addEventListener("click", postMsg)
+
+            async function postMsg(){
+                let msg = document.getElementById('msginput').value
+                try {
+                    await zapi('/v1/msg', {method:'POST', body: {msg: msg}})
+                    window.location.reload()
+                }catch(e){
+                    notify(`${e}`)
+                }
+            }
+            function notify(message, type = 'danger', icon = 'info-circle', duration = 5000) {
+                const alert = Object.assign(document.createElement('sl-alert'), {
+                type: type,
+                closable: true,
+                duration: duration,
+                innerHTML: `
+                    <sl-icon name="${icon}"></sl-icon>
+                    ${message}
+                `
+                });
+
+                document.body.append(alert);
+                return alert.toast();
+            }
+
+        div
+            h2 Messages
+            each m in msgs
+                div
+                    p #{m.msg}
+
+
